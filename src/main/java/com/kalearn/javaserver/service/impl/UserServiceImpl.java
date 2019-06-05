@@ -31,7 +31,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void deleteUserById(Long id) throws Exception {
-        userMapper.deleteUserById(id);
+        User user = userMapper.findById(id);
+        if(user == null){
+            throw new Exception("要删除的用户不存在");
+        } else {
+            userMapper.deleteUserById(id);
+        }
     }
 
     @Override
@@ -46,12 +51,24 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void updateNameById(UpdateModel model) throws Exception {
-        userMapper.updateNameById(model);
+        User user = userMapper.findById(model.getId());
+        if(user == null){
+            throw new Exception("要更新的用户不存在");
+        } else {
+            userMapper.updateNameById(model);
+        }
+        
     }
 
     @Override
     public void saveOrUpdate(User user) throws Exception {
-        userMapper.saveOrUpdate(user);
+        
+        User dbuser = userMapper.findById(user.getId());
+        if(dbuser == null||user==null){
+            throw new Exception("要更新的用户不存在");
+        } else {
+            userMapper.saveOrUpdate(user);
+        }
     }
 
     @Override

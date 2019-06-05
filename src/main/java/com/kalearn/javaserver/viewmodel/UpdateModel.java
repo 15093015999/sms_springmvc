@@ -5,10 +5,10 @@ package com.kalearn.javaserver.viewmodel;
  */
 public class UpdateModel {
 
-    private int id;
+    private Long id;
     private String name;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -20,7 +20,7 @@ public class UpdateModel {
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

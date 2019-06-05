@@ -35,70 +35,73 @@ public class UserController {
     @ApiOperation("模糊查询")
     @GetMapping("/query")
     public ActionResult query(User user) {
-        return ActionResultUtil.success("sussess",userService.query(user));
-    }    
+        return ActionResultUtil.success("sussess", userService.query(user));
+    }
 
     // @PostMapping("/add")
     @ApiOperation("添加")
     @GetMapping("/add")
-    public void add(User user) {
-        if (user != null) {
-            try {
-                userService.add(user);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+    public ActionResult add(User user) {
+        try {
+            userService.add(user);
+            return ActionResultUtil.success("添加成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtil.error(e.getMessage());
         }
     }
 
     @ApiOperation("删除指定")
     @GetMapping("/deleteById")
-    public void deleteUserById(@ApiParam(value = "ID", required = true) @RequestParam(value = "id") Long id) {
+    public ActionResult deleteUserById(@ApiParam(value = "ID", required = true) @RequestParam(value = "id") Long id) {
         try {
             userService.deleteUserById(id);
+            return ActionResultUtil.success("删除成功");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return ActionResultUtil.error(e.getMessage());
         }
     }
 
     @ApiOperation("删除全部")
     @GetMapping("/deleteAll")
     @Async
-    public void deleteAll() {
+    public ActionResult deleteAll() {
         try {
             userService.deleteAll();
+            return ActionResultUtil.success("删除成功");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return ActionResultUtil.error(e.getMessage());
         }
     }
 
     @ApiOperation("id查询")
     @GetMapping("/findById")
     public ActionResult findById(Long id) {
-        return ActionResultUtil.success("sussess",userService.findById(id));
+        return ActionResultUtil.success("sussess", userService.findById(id));
     }
 
     @ApiOperation("更新名字")
     @GetMapping("/updateNameById")
-    public void updateNameById(UpdateModel model) {
+    public ActionResult updateNameById(UpdateModel model) {
         try {
             userService.updateNameById(model);
+            return ActionResultUtil.success("更新成功");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return ActionResultUtil.error(e.getMessage());
         }
     }
 
     @GetMapping("/saveOrUpdate")
-    public void saveOrUpdate(User user) {
+    public ActionResult saveOrUpdate(User user) {
         try {
             userService.saveOrUpdate(user);
+            return ActionResultUtil.success("更新成功");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return ActionResultUtil.error(e.getMessage());
         }
     }
 

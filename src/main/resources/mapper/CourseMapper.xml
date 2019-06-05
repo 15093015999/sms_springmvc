@@ -39,7 +39,7 @@
                 </if>
                 <if test="credit != null"> credit=#{credit},
                 </if>
-                <if test="teacher_id != null"> teacher_id=#{teacher_id},
+                <if test="teacher_id != null"> teacher_id=#{teacherId},
                 </if>
             </trim>
         </set>

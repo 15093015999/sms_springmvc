@@ -12,10 +12,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     List<User> findAll();
     List<User> query(User user);
-    void add(User user) throws Exception;
-    void deleteUserById(Long id) throws Exception;
-    void deleteAll() throws Exception;
+    void add(User user);
+    void deleteUserById(Long id);
+    void deleteAll();
     User findById(Long id);
-    void updateNameById(UpdateModel model) throws Exception;
-    void saveOrUpdate(User user) throws Exception;
+    void updateNameById(UpdateModel model);
+    void saveOrUpdate(User user);
 }
