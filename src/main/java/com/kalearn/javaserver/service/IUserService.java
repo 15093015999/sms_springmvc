@@ -3,7 +3,7 @@ package com.kalearn.javaserver.service;
 import java.util.List;
 
 import com.kalearn.javaserver.bean.User;
-import com.kalearn.javaserver.viewmodel.UpdateModel;
+import com.kalearn.javaserver.dto.UpdateModel;
 
 public interface IUserService {
 

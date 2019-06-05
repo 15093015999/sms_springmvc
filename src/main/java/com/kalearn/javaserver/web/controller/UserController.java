@@ -3,10 +3,10 @@ package com.kalearn.javaserver.web.controller;
 import javax.annotation.Resource;
 
 import com.kalearn.javaserver.bean.User;
+import com.kalearn.javaserver.dto.UpdateModel;
 import com.kalearn.javaserver.service.IUserService;
 import com.kalearn.javaserver.util.ActionResult;
 import com.kalearn.javaserver.util.ActionResultUtil;
-import com.kalearn.javaserver.viewmodel.UpdateModel;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;

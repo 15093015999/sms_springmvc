@@ -3,7 +3,7 @@ package com.kalearn.javaserver.dao;
 import java.util.List;
 
 import com.kalearn.javaserver.bean.User;
-import com.kalearn.javaserver.viewmodel.UpdateModel;
+import com.kalearn.javaserver.dto.UpdateModel;
 
 import org.apache.ibatis.annotations.Mapper;
 

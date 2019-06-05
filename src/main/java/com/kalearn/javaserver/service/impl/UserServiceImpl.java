@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import com.kalearn.javaserver.bean.User;
 import com.kalearn.javaserver.dao.UserMapper;
 import com.kalearn.javaserver.service.IUserService;
-import com.kalearn.javaserver.viewmodel.UpdateModel;
+import com.kalearn.javaserver.dto.UpdateModel;
 
 import org.springframework.stereotype.Service;
 

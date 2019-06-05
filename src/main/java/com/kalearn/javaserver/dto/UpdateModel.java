@@ -1,4 +1,4 @@
-package com.kalearn.javaserver.viewmodel;
+package com.kalearn.javaserver.dto;
 
 /**
  * updateModel
