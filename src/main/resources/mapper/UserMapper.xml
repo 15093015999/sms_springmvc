@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kalearn.javaserver.dao.UserMapper">
+    <select id="findAll" resultType="com.kalearn.javaserver.bean.User">
+        select * from sms_user
+    </select>
+    <select id="findById" resultType="com.kalearn.javaserver.bean.User" parameterType="int">
+        select * from sms_user where id =#{id}
+    </select>
+    <select id="query" resultType="com.kalearn.javaserver.bean.User" parameterType="int">
+        select * from sms_user 
+        <where>
+            <trim prefix="AND">
+                <if test="realname != null">
+                realname like concat("%",#{realname},"%")
+                </if>
+                <if test="password != null">
+                password like concat("%",#{password},"%")
+                </if>
+                <if test="telephone != null">
+                telephone like concat("%",#{telephone},"%")
+                </if>
+                <if test="status != null">
+                status like concat("%",#{status},"%")
+                </if>
+                <if test="gender != null">
+                gender like concat("%",#{gender},"%")
+                </if>
+                <if test="type != null">
+                type like concat("%",#{type},"%")
+                </if>
+            </trim>
+        </where>
+    </select>
+    <insert id="add" parameterType="com.kalearn.javaserver.bean.User">
+        insert into sms_user values(#{id},#{realname},#{password},#{telephone},#{status},#{gender},#{type})
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        delete from sms_user where id= #{id}
+    </delete>
+    <delete id="deleteAll">
+        delete from sms_user
+    </delete>
+    <update id="updateNameById" parameterType="com.kalearn.javaserver.viewmodel.UpdateModel">
+        update sms_user set realname=#{name} where id=#{id}
+    </update>
+    <update id="saveOrUpdate" parameterType="com.kalearn.javaserver.bean.User">
+        update sms_user 
+        <set>
+            <trim prefix=",">
+                <if test="realname != null"> realname=#{realname},
+                </if>
+                <if test="password != null"> password=#{password},
+                </if>
+                <if test="telephone != null"> telephone=#{telephone},
+                </if>
+                <if test="status != null"> status=#{status},
+                </if>
+                <if test="gender != null"> gender=#{gender},
+                </if>
+                <if test="type != null"> type=#{type},
+                </if>
+            </trim>
+        </set>
+         where id=#{id}
+    </update>
+</mapper>
