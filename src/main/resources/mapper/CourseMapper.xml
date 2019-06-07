@@ -26,7 +26,7 @@
     <insert id="addCourse" parameterType="com.kalearn.javaserver.bean.Course">
         insert into sms_course values(#{id},#{name},#{description},#{credit},#{teacherId})
     </insert>
-    <delete id="deleteById" parameterType="int">
+    <delete id="deleteById" parameterType="java.lang.Long">
         delete from sms_course where id = #{id}
     </delete>
     <update id="saveOrUpdate" parameterType="com.kalearn.javaserver.bean.Course">

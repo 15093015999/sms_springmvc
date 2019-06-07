@@ -1,6 +1,7 @@
 package com.kalearn.javaserver.web.controller;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import com.kalearn.javaserver.bean.User;
 import com.kalearn.javaserver.dto.UpdateModel;
@@ -10,12 +11,12 @@ import com.kalearn.javaserver.util.ActionResultUtil;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * UserController
@@ -40,8 +41,8 @@ public class UserController {
 
     // @PostMapping("/add")
     @ApiOperation("添加")
-    @GetMapping("/add")
-    public ActionResult add(User user) {
+    @PostMapping("/add")
+    public ActionResult add(@RequestBody @Valid User user) {
         try {
             userService.add(user);
             return ActionResultUtil.success("添加成功");
@@ -52,8 +53,10 @@ public class UserController {
     }
 
     @ApiOperation("删除指定")
-    @GetMapping("/deleteById")
-    public ActionResult deleteUserById(@ApiParam(value = "ID", required = true) @RequestParam(value = "id") Long id) {
+    @PostMapping("/deleteById")
+    // @RequestParam(value = "id")
+    // @ApiParam(value = "ID", required = true)
+    public ActionResult deleteUserById(@RequestBody @Valid Long id) {
         try {
             userService.deleteUserById(id);
             return ActionResultUtil.success("删除成功");

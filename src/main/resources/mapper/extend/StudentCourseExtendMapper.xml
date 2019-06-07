@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kalearn.javaserver.dao.extend.StudentCourseExtendMapper">
+    <select id="selectAll" resultMap="studentCourseExtendResultMap">
+        select
+            sc.id as sc_id,
+            sc.xk_time,
+            sc.grade,
+            s.realname,
+            c.name
+        from sms_studentCourse sc,sms_user s,sms_course c
+        where sc.student_id = s.id and sc.course_id = c.id
+    </select>
+    <resultMap id="studentCourseExtendResultMap" type="com.kalearn.javaserver.bean.extend.StudentCourseExtend">
+        <id column="sc_id" property="id"/>
+        <result column="xk_time" property="xk_time"/>
+        <result column="grade" property="grade"/>
+        <association property="student" javaType="com.kalearn.javaserver.bean.User">
+            <result column="realname" property="realname"/>
+        </association>
+        <association property="course" javaType="com.kalearn.javaserver.bean.Course">
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+    
+</mapper>

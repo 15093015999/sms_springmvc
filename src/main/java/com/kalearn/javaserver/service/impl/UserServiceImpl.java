@@ -26,6 +26,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void add(User user) throws Exception {
+        user.setStatus("正常");
         userMapper.add(user);
     }
 

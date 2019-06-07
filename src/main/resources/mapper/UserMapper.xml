@@ -4,10 +4,10 @@
     <select id="findAll" resultType="com.kalearn.javaserver.bean.User">
         select * from sms_user
     </select>
-    <select id="findById" resultType="com.kalearn.javaserver.bean.User" parameterType="int">
+    <select id="findById" resultType="com.kalearn.javaserver.bean.User" parameterType="java.lang.Long">
         select * from sms_user where id =#{id}
     </select>
-    <select id="query" resultType="com.kalearn.javaserver.bean.User" parameterType="int">
+    <select id="query" resultType="com.kalearn.javaserver.bean.User" parameterType="java.lang.Long">
         select * from sms_user 
         <where>
             <trim prefix="AND">
@@ -33,15 +33,15 @@
         </where>
     </select>
     <insert id="add" parameterType="com.kalearn.javaserver.bean.User">
-        insert into sms_user values(#{id},#{realname},#{password},#{telephone},#{status},#{gender},#{type})
+        insert into sms_user values(#{id},#{realname},#{password},#{telephone},#{type},#{gender},#{status})
     </insert>
-    <delete id="deleteUserById" parameterType="int">
+    <delete id="deleteUserById" parameterType="java.lang.Long">
         delete from sms_user where id= #{id}
     </delete>
     <delete id="deleteAll">
         delete from sms_user
     </delete>
-    <update id="updateNameById" parameterType="com.kalearn.javaserver.viewmodel.UpdateModel">
+    <update id="updateNameById" parameterType="com.kalearn.javaserver.dto.UpdateModel">
         update sms_user set realname=#{name} where id=#{id}
     </update>
     <update id="saveOrUpdate" parameterType="com.kalearn.javaserver.bean.User">
